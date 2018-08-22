@@ -1,10 +1,40 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskManager.DLL.Models;
 
 namespace TaskManager.DLL.DBContext
 {
-    class TaskManagerContext
+    public class TaskManagerContext: DbContext
     {
+        public TaskManagerContext(DbContextOptions<TaskManagerContext> options):base(options)
+        {
+            Database.EnsureCreated();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<ConcreteTask> ConcreteTasks { get; set; }
+        public DbSet<GlobalTask> GlobalTasks { get; set; }
+        public DbSet<CalendarDay> Days { get; set; }
+        public DbSet<Theme> Themes { get; set; }
+        public DbSet<User> Users { get; set; }
+
+        public DbSet<TEntity> SetOf<TEntity>() where TEntity : Entity
+        {
+            if (ConcreteTasks is IEnumerable<TEntity>)
+                return ConcreteTasks as DbSet<TEntity>;
+            else if (GlobalTasks is IEnumerable<TEntity>)
+                return GlobalTasks as DbSet<TEntity>;
+            else if (Days is IEnumerable<TEntity>)
+                return Days as DbSet<TEntity>;
+            else if (Themes is IEnumerable<TEntity>)
+                return Themes as DbSet<TEntity>;
+            else return Users as DbSet<TEntity>;
+        }
+
     }
 }
