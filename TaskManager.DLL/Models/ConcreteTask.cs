@@ -12,5 +12,6 @@ namespace TaskManager.DLL.Models
         public DateTime StartTime { get; set; }
         public Frequency Frequency { get; set; }
         public List<CalendarDay> Days { get; set; }
+        public List<Stage> Stages { get; set; }
     }
 }

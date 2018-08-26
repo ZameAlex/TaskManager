@@ -5,10 +5,8 @@ using TaskManager.Shared.Enums;
 
 namespace TaskManager.DLL.Models
 {
-    public abstract class Task : Entity
+    public abstract class Task : DescriptiveEntity
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
         public Status Status { get; set; }
     }
 }

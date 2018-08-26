@@ -10,7 +10,8 @@ namespace TaskManager.DLL.DBContext
     {
         public TaskManagerContext(DbContextOptions<TaskManagerContext> options):base(options)
         {
-            Database.EnsureCreated();
+            Database.Migrate();
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,7 @@ namespace TaskManager.DLL.DBContext
         public DbSet<CalendarDay> Days { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Stage> Stages { get; set; }
 
         public DbSet<TEntity> SetOf<TEntity>() where TEntity : Entity
         {
@@ -33,6 +35,8 @@ namespace TaskManager.DLL.DBContext
                 return Days as DbSet<TEntity>;
             else if (Themes is IEnumerable<TEntity>)
                 return Themes as DbSet<TEntity>;
+            else if (Stages is IEnumerable<TEntity>)
+                return Stages as DbSet<TEntity>;
             else return Users as DbSet<TEntity>;
         }
 

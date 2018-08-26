@@ -12,9 +12,11 @@ namespace TaskManagerAPI.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        TaskManagerContext context;
 
-        public ValuesController()
+        public ValuesController(TaskManagerContext context)
         {
+            this.context = context;
         }
 
         // GET api/values
