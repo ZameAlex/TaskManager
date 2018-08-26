@@ -10,8 +10,14 @@ namespace TaskManager.DLL.DBContext
     {
         public TaskManagerContext(DbContextOptions<TaskManagerContext> options):base(options)
         {
-            Database.Migrate();
-            
+            if (Database.GetPendingMigrations() == null)
+            {
+                Database.EnsureCreated();
+            }
+            else
+            {
+                Database.Migrate();
+            }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
