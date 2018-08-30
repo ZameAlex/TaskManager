@@ -1,0 +1,6 @@
+2018-08-30 23:59:17.6375 Info Message Template Auto Format enabled
+2018-08-30 23:59:17.6375 Info Found 16 configuration items
+2018-08-30 23:59:17.6375 Info Adding target File Target[allfile]
+2018-08-30 23:59:17.6375 Info Configured from an XML element in D:\MY\учеба\C#\TaskManager\TaskManagerAPI\bin\Debug\netcoreapp2.1\../../../nlog.config...
+2018-08-30 23:59:17.6375 Info Closing old configuration.
+2018-08-30 23:59:17.6598 Info Found 16 configuration items
