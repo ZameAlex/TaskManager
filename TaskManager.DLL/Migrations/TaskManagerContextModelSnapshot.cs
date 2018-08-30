@@ -21,74 +21,74 @@ namespace TaskManager.DLL.Migrations
 
             modelBuilder.Entity("TaskManager.DLL.Models.CalendarDay", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ConcreteTaskID");
+                    b.Property<int?>("ConcreteTaskId");
 
                     b.Property<DateTime>("Date");
 
                     b.Property<TimeSpan>("FreeTime");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ConcreteTaskID");
+                    b.HasIndex("ConcreteTaskId");
 
-                    b.ToTable("Days");
+                    b.ToTable("CalendarDays");
                 });
 
             modelBuilder.Entity("TaskManager.DLL.Models.Stage", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ConcreteTaskID");
+                    b.Property<int?>("ConcreteTaskId");
 
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ConcreteTaskID");
+                    b.HasIndex("ConcreteTaskId");
 
                     b.ToTable("Stages");
                 });
 
             modelBuilder.Entity("TaskManager.DLL.Models.Task", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CalendarDayID");
+                    b.Property<int?>("CalendarDayId");
 
                     b.Property<string>("Description");
 
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
-                    b.Property<int?>("GlobalTaskID");
+                    b.Property<int?>("GlobalTaskId");
 
                     b.Property<string>("Name");
 
                     b.Property<int>("Status");
 
-                    b.Property<int?>("ThemeID");
+                    b.Property<int?>("ThemeId");
 
-                    b.Property<int?>("UserID");
+                    b.Property<int?>("UserId");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CalendarDayID");
+                    b.HasIndex("CalendarDayId");
 
-                    b.HasIndex("GlobalTaskID");
+                    b.HasIndex("GlobalTaskId");
 
-                    b.HasIndex("ThemeID");
+                    b.HasIndex("ThemeId");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Task");
 
@@ -97,7 +97,7 @@ namespace TaskManager.DLL.Migrations
 
             modelBuilder.Entity("TaskManager.DLL.Models.Theme", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -105,26 +105,28 @@ namespace TaskManager.DLL.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("UserID");
+                    b.Property<int?>("UserId");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Themes");
                 });
 
             modelBuilder.Entity("TaskManager.DLL.Models.User", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Login");
 
+                    b.Property<string>("Nickname");
+
                     b.Property<string>("Password");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -161,40 +163,40 @@ namespace TaskManager.DLL.Migrations
                 {
                     b.HasOne("TaskManager.DLL.Models.ConcreteTask")
                         .WithMany("Days")
-                        .HasForeignKey("ConcreteTaskID");
+                        .HasForeignKey("ConcreteTaskId");
                 });
 
             modelBuilder.Entity("TaskManager.DLL.Models.Stage", b =>
                 {
                     b.HasOne("TaskManager.DLL.Models.ConcreteTask")
                         .WithMany("Stages")
-                        .HasForeignKey("ConcreteTaskID");
+                        .HasForeignKey("ConcreteTaskId");
                 });
 
             modelBuilder.Entity("TaskManager.DLL.Models.Task", b =>
                 {
                     b.HasOne("TaskManager.DLL.Models.CalendarDay")
                         .WithMany("Tasks")
-                        .HasForeignKey("CalendarDayID");
+                        .HasForeignKey("CalendarDayId");
 
                     b.HasOne("TaskManager.DLL.Models.GlobalTask")
                         .WithMany("Tasks")
-                        .HasForeignKey("GlobalTaskID");
+                        .HasForeignKey("GlobalTaskId");
 
                     b.HasOne("TaskManager.DLL.Models.Theme")
                         .WithMany("Tasks")
-                        .HasForeignKey("ThemeID");
+                        .HasForeignKey("ThemeId");
 
                     b.HasOne("TaskManager.DLL.Models.User")
                         .WithMany("Tasks")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("TaskManager.DLL.Models.Theme", b =>
                 {
                     b.HasOne("TaskManager.DLL.Models.User")
                         .WithMany("Themes")
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
