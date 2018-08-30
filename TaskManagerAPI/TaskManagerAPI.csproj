@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.BLL\TaskManager.BLL.csproj" />
-    <ProjectReference Include="..\TaskManager.DLL\TaskManager.DAL.csproj" />
+    <ProjectReference Include="..\TaskManager.DLL\TaskManager.DLL.csproj" />
     <ProjectReference Include="..\TaskManager.Shared\TaskManager.Shared.csproj" />
   </ItemGroup>
 
