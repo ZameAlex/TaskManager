@@ -10,10 +10,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaskManager.DLL\TaskManager.DLL.csproj" />
+    <ProjectReference Include="..\TaskManager.BLL\TaskManager.BLL.csproj" />
+    <ProjectReference Include="..\TaskManager.DLL\TaskManager.DAL.csproj" />
     <ProjectReference Include="..\TaskManager.Shared\TaskManager.Shared.csproj" />
   </ItemGroup>
 
