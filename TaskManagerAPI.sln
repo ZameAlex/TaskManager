@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManagerAPI", "TaskManag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.BLL", "TaskManager.BLL\TaskManager.BLL.csproj", "{E647045C-65D6-4A51-8995-ED1C8F16C40F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.DLL", "TaskManager.DLL\TaskManager.DLL.csproj", "{0B07C059-CCB6-4E58-908B-819FD61ACBC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.DAL", "TaskManager.DLL\TaskManager.DAL.csproj", "{0B07C059-CCB6-4E58-908B-819FD61ACBC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Shared", "TaskManager.Shared\TaskManager.Shared.csproj", "{8EDBC09E-E649-4D26-AAD9-9A6F5037D6D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Shared", "TaskManager.Shared\TaskManager.Shared.csproj", "{8EDBC09E-E649-4D26-AAD9-9A6F5037D6D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
