@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TaskManager.DLL.Migrations
 {
-    public partial class StagesInConcreteTask : Migration
+    public partial class Init_Migrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

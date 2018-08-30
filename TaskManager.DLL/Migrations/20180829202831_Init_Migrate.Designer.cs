@@ -10,8 +10,8 @@ using TaskManager.DLL.DBContext;
 namespace TaskManager.DLL.Migrations
 {
     [DbContext(typeof(TaskManagerContext))]
-    [Migration("20180826213227_DescriptiveEntities")]
-    partial class DescriptiveEntities
+    [Migration("20180829202831_Init_Migrate")]
+    partial class Init_Migrate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
