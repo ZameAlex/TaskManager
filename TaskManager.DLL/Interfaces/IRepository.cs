@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using TaskManager.DLL.Models;
+
+namespace TaskManager.DAL.Interfaces
+{
+    public interface IRepository<TEntity> where TEntity : Entity
+    {
+        List<TEntity> Get();
+
+        TEntity GetById(int id);
+
+        int Create(TEntity entity);
+
+        void Update(int id, TEntity entity);
+
+        void Delete(TEntity entity);
+
+        void DeleteById(int id);
+    }
+}
