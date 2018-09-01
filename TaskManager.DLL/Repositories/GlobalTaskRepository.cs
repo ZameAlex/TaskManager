@@ -5,7 +5,7 @@ using TaskManager.DLL.Models;
 using TaskManager.Shared.Enums;
 using TaskManager.Shared.Exceptions;
 
-namespace TaskManager.DAL.Repositories
+namespace TaskManager.DLL.Repositories
 {
     public class GlobalTaskRepository : BaseRepository<GlobalTask>
     {

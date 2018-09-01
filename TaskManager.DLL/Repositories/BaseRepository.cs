@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TaskManager.DAL.Interfaces;
+using TaskManager.DLL.Interfaces;
 using TaskManager.DLL.DBContext;
 using TaskManager.DLL.Models;
 
-namespace TaskManager.DAL.Repositories
+namespace TaskManager.DLL.Repositories
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {

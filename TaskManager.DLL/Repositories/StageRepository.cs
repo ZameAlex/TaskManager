@@ -1,7 +1,7 @@
 ﻿using TaskManager.DLL.DBContext;
 using TaskManager.DLL.Models;
 
-namespace TaskManager.DAL.Repositories
+namespace TaskManager.DLL.Repositories
 {
     public class StageRepository : BaseRepository<Stage>
     {

@@ -3,7 +3,7 @@ using TaskManager.DLL.DBContext;
 using TaskManager.DLL.Models;
 using TaskManager.Shared.Exceptions;
 
-namespace TaskManager.DAL.Repositories
+namespace TaskManager.DLL.Repositories
 {
     public class ThemeRepository : BaseRepository<Theme>
     {
