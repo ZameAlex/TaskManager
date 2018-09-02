@@ -4,7 +4,7 @@ using TaskManager.DLL.DBContext;
 using TaskManager.DLL.Models;
 using TaskManager.Shared.Exceptions;
 
-namespace TaskManager.DAL.Repositories
+namespace TaskManager.DLL.Repositories
 {
     public class CalendarDayRepository : BaseRepository<CalendarDay>
     {
@@ -23,10 +23,10 @@ namespace TaskManager.DAL.Repositories
             base.Update(id, tmp);
         }
 
-        public void UpdateCalendarDayFreeTime(int id, TimeSpan freeTime)
+        public void UpdateCalendarDayFreeTime(int id, TimeSpan deltaFreeTime)
         {
             var tmp = GetById(id);
-            tmp.FreeTime += freeTime;
+            tmp.FreeTime += deltaFreeTime;
             tmContext.CalendarDays.Update(tmp);
             base.Update(id, tmp);
         }

@@ -125,7 +125,7 @@ namespace TaskManager.Tests.Repositories
         }
 
         [Test]
-        public void UpdateStageName_Stage_When_update_Then_results_are_equals()
+        public void UpdateStageName_When_update_Then_results_are_equals()
         {
             var id = unitOfWork.Stages.Create(new Stage()
             {
@@ -137,22 +137,6 @@ namespace TaskManager.Tests.Repositories
             Assert.AreEqual(tmp.Id, id);
             Assert.AreEqual(tmp.Name, "321");
             Assert.AreEqual(tmp.Description, "Description for \"123\"");
-            unitOfWork.Stages.DeleteById(id);
-        }
-
-        [Test]
-        public void UpdateStageDescription_Stage_When_update_Then_results_are_equals()
-        {
-            var id = unitOfWork.Stages.Create(new Stage()
-            {
-                Name = "123",
-                Description = "Description for \"123\""
-            });
-            unitOfWork.Stages.UpdateStageDescription(id, "Description for \"321\"");
-            var tmp = unitOfWork.Stages.GetById(id);
-            Assert.AreEqual(tmp.Id, id);
-            Assert.AreEqual(tmp.Name, "123");
-            Assert.AreEqual(tmp.Description, "Description for \"321\"");
             unitOfWork.Stages.DeleteById(id);
         }
     }

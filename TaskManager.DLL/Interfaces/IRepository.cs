@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TaskManager.DLL.Models;
 
-namespace TaskManager.DAL.Interfaces
+namespace TaskManager.DLL.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : Entity
     {

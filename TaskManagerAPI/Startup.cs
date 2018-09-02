@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TaskManager.DAL.Interfaces;
-using TaskManager.DAL.UnitOfWork;
+using TaskManager.DLL.Interfaces;
+using TaskManager.DLL.UnitOfWork;
 using TaskManager.DLL.DBContext;
 
 namespace TaskManagerAPI

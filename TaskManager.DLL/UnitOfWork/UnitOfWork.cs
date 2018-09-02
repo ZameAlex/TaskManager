@@ -1,10 +1,9 @@
 ﻿using System;
-using TaskManager.DAL.Interfaces;
-using TaskManager.DAL.Repositories;
+using TaskManager.DLL.Interfaces;
+using TaskManager.DLL.Repositories;
 using TaskManager.DLL.DBContext;
-using TaskManager.DLL.Models;
 
-namespace TaskManager.DAL.UnitOfWork
+namespace TaskManager.DLL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -24,7 +23,7 @@ namespace TaskManager.DAL.UnitOfWork
 
         #region Repositories
 
-        public IRepository<CalendarDay> CalendarDays
+        public CalendarDayRepository CalendarDays
         {
             get
             {
@@ -36,7 +35,7 @@ namespace TaskManager.DAL.UnitOfWork
             }
         }
 
-        public IRepository<ConcreteTask> ConcreteTasks
+        public ConcreteTaskRepository ConcreteTasks
         {
             get
             {
@@ -48,7 +47,7 @@ namespace TaskManager.DAL.UnitOfWork
             }
         }
 
-        public IRepository<GlobalTask> GlobalTasks
+        public GlobalTaskRepository GlobalTasks
         {
             get
             {
@@ -60,7 +59,7 @@ namespace TaskManager.DAL.UnitOfWork
             }
         }
 
-        public IRepository<Stage> Stages
+        public StageRepository Stages
         {
             get
             {
@@ -72,7 +71,7 @@ namespace TaskManager.DAL.UnitOfWork
             }
         }
 
-        public IRepository<Theme> Themes
+        public ThemeRepository Themes
         {
             get
             {
@@ -84,7 +83,7 @@ namespace TaskManager.DAL.UnitOfWork
             }
         }
 
-        public IRepository<User> Users
+        public UserRepository Users
         {
             get
             {
