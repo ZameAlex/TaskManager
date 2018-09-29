@@ -4,6 +4,7 @@ using TaskManager.BLL.Interfaces;
 using TaskManager.DLL.Models;
 using TaskManager.DLL.Repositories;
 using TaskManager.Shared.DTOs;
+using TaskManager.Shared.Exceptions;
 
 namespace TaskManager.BLL.Mapping
 {
@@ -36,15 +37,15 @@ namespace TaskManager.BLL.Mapping
                 {
                     if (item is GlobalTask)
                     {
-                        list.Add(MapGlobalTask((GlobalTask)item));
+                        list.Add(MapGlobalTask(item as GlobalTask));
                     }
                     else if (item is ConcreteTask)
                     {
-                        list.Add(MapConcreteTask((ConcreteTask)item));
+                        list.Add(MapConcreteTask(item as ConcreteTask));
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        throw new NotFoundException();
                     }
                 }
             }
@@ -189,15 +190,15 @@ namespace TaskManager.BLL.Mapping
                 {
                     if (item is GlobalTask)
                     {
-                        list.Add(MapGlobalTask((GlobalTask)item));
+                        list.Add(MapGlobalTask(item as GlobalTask));
                     }
                     else if (item is ConcreteTask)
                     {
-                        list.Add(MapConcreteTask((ConcreteTask)item));
+                        list.Add(MapConcreteTask(item as ConcreteTask));
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        throw new NotFoundException();
                     }
                 }
             }
@@ -278,15 +279,15 @@ namespace TaskManager.BLL.Mapping
                 {
                     if (item is GlobalTask)
                     {
-                        list.Add(MapGlobalTask((GlobalTask)item));
+                        list.Add(MapGlobalTask(item as GlobalTask));
                     }
                     else if (item is ConcreteTask)
                     {
-                        list.Add(MapConcreteTask((ConcreteTask)item));
+                        list.Add(MapConcreteTask(item as ConcreteTask));
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        throw new NotFoundException();
                     }
                 }
             }
@@ -343,15 +344,15 @@ namespace TaskManager.BLL.Mapping
                 {
                     if (item is GlobalTask)
                     {
-                        listTasks.Add(MapGlobalTask((GlobalTask)item));
+                        listTasks.Add(MapGlobalTask(item as GlobalTask));
                     }
                     else if (item is ConcreteTask)
                     {
-                        listTasks.Add(MapConcreteTask((ConcreteTask)item));
+                        listTasks.Add(MapConcreteTask(item as ConcreteTask));
                     }
                     else
                     {
-                        throw new NotImplementedException();
+                        throw new NotFoundException();
                     }
                 }
             }
