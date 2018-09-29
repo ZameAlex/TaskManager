@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TaskManager.BLL.Interfaces;
 using TaskManager.DLL.Models;
 using TaskManager.DLL.Repositories;
