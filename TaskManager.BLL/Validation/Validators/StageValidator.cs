@@ -9,11 +9,11 @@ namespace TaskManager.BLL.Validation.Validators
 {
     public class StageValidator : AbstractValidator<Stage>
     {
-        /// <summary>
-        /// Stage validate as DescriptiveEntity
-        /// </summary>
         public StageValidator()
         {
+            var validator = new DescriptiveEntityValidator();
+            foreach (var rule in validator)
+                AddRule(rule);
         }
     }
 }

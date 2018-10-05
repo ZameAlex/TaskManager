@@ -11,6 +11,9 @@ namespace TaskManager.BLL.Validation.Validators
     {
         public TaskValidator()
         {
+            var validator = new DescriptiveEntityValidator();
+            foreach (var rule in validator)
+                AddRule(rule);
         }
     }
 }
