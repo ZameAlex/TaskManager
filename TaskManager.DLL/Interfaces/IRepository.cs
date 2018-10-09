@@ -7,7 +7,7 @@ namespace TaskManager.DLL.Interfaces
 {
     public interface IRepository<TEntity> where TEntity : Entity
     {
-        List<TEntity> Get();
+        List<TEntity> GetAll();
 
         TEntity GetById(int id);
 

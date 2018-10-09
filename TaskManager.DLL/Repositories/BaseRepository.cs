@@ -34,7 +34,7 @@ namespace TaskManager.DLL.Repositories
             tmContext.SaveChanges();
         }
 
-        public virtual List<TEntity> Get()
+        public virtual List<TEntity> GetAll()
         {
             return tmContext.SetOf<TEntity>().ToList();
         }
