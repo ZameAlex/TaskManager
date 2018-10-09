@@ -6,7 +6,7 @@ using TaskManager.DLL.Models;
 
 namespace TaskManager.DLL.Repositories
 {
-    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
+    public abstract class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         protected readonly TaskManagerContext tmContext;
 

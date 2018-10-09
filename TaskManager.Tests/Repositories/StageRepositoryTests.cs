@@ -40,13 +40,13 @@ namespace TaskManager.Tests.Repositories
         [Test]
         public void Get_Stage_When_get_Then_results_are_equals()
         {
-            Assert.AreEqual(unitOfWork.Stages.Get().Count, 0);
+            Assert.AreEqual(unitOfWork.Stages.GetAll().Count, 0);
             var id1 = unitOfWork.Stages.Create(new Stage()
             {
                 Name = "123",
                 Description = "Description for \"123\""
             });
-            Assert.AreEqual(unitOfWork.Stages.Get().Count, 1);
+            Assert.AreEqual(unitOfWork.Stages.GetAll().Count, 1);
             Assert.AreEqual(unitOfWork.Stages.GetById(id1).Id, id1);
             Assert.AreEqual(unitOfWork.Stages.GetById(id1).Name, "123");
             Assert.AreEqual(unitOfWork.Stages.GetById(id1).Description, "Description for \"123\"");
@@ -55,7 +55,7 @@ namespace TaskManager.Tests.Repositories
                 Name = "123",
                 Description = "Description for \"123\""
             });
-            Assert.AreEqual(unitOfWork.Stages.Get().Count, 2);
+            Assert.AreEqual(unitOfWork.Stages.GetAll().Count, 2);
             Assert.AreEqual(unitOfWork.Stages.GetById(id1).Id, id1);
             Assert.AreEqual(unitOfWork.Stages.GetById(id1).Name, "123");
             Assert.AreEqual(unitOfWork.Stages.GetById(id1).Description, "Description for \"123\"");

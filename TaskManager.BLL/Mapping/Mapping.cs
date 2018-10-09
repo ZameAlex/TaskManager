@@ -60,8 +60,8 @@ namespace TaskManager.BLL.Mapping
 
         public CalendarDay MapCalendarDay(CalendarDayDTO value)
         {
-            var listRepoConcreteTasks = concreteTaskRepo.Get();
-            var listRepoGlobalTasks = globalTaskRepo.Get();
+            var listRepoConcreteTasks = concreteTaskRepo.GetAll();
+            var listRepoGlobalTasks = globalTaskRepo.GetAll();
             List<Task> listTasks = new List<Task>();
             listTasks.AddRange(listRepoConcreteTasks);
             listTasks.AddRange(listRepoGlobalTasks);
@@ -129,7 +129,7 @@ namespace TaskManager.BLL.Mapping
 
         public ConcreteTask MapConcreteTask(ConcreteTaskDTO value)
         {
-            var listRepoCalendarDays = calendarDayRepo.Get();
+            var listRepoCalendarDays = calendarDayRepo.GetAll();
             var listDays = new List<CalendarDay>();
             if (value.Days != null)
             {
@@ -147,7 +147,7 @@ namespace TaskManager.BLL.Mapping
                 }
             }
 
-            var listRepoStages = stageRepo.Get();
+            var listRepoStages = stageRepo.GetAll();
             var listStages = new List<Stage>();
             if (value.Stages != null)
             {
@@ -215,8 +215,8 @@ namespace TaskManager.BLL.Mapping
 
         public GlobalTask MapGlobalTask(GlobalTaskDTO value)
         {
-            var listRepoConcreteTasks = concreteTaskRepo.Get();
-            var listRepoGlobalTasks = globalTaskRepo.Get();
+            var listRepoConcreteTasks = concreteTaskRepo.GetAll();
+            var listRepoGlobalTasks = globalTaskRepo.GetAll();
             List<Task> listTasks = new List<Task>();
             listTasks.AddRange(listRepoConcreteTasks);
             listTasks.AddRange(listRepoGlobalTasks);
@@ -302,8 +302,8 @@ namespace TaskManager.BLL.Mapping
 
         public Theme MapTheme(ThemeDTO value)
         {
-            var listRepoConcreteTasks = concreteTaskRepo.Get();
-            var listRepoGlobalTasks = globalTaskRepo.Get();
+            var listRepoConcreteTasks = concreteTaskRepo.GetAll();
+            var listRepoGlobalTasks = globalTaskRepo.GetAll();
             List<Task> listTasks = new List<Task>();
             listTasks.AddRange(listRepoConcreteTasks);
             listTasks.AddRange(listRepoGlobalTasks);
@@ -378,8 +378,8 @@ namespace TaskManager.BLL.Mapping
 
         public User MapUser(UserDTO value)
         {
-            var listRepoConcreteTasks = concreteTaskRepo.Get();
-            var listRepoGlobalTasks = globalTaskRepo.Get();
+            var listRepoConcreteTasks = concreteTaskRepo.GetAll();
+            var listRepoGlobalTasks = globalTaskRepo.GetAll();
             List<Task> list = new List<Task>();
             list.AddRange(listRepoConcreteTasks);
             list.AddRange(listRepoGlobalTasks);
@@ -401,7 +401,7 @@ namespace TaskManager.BLL.Mapping
                 }
             }
 
-            var listRepoThemes = themeRepo.Get();
+            var listRepoThemes = themeRepo.GetAll();
             var listThemes = new List<Theme>();
             if (value.Themes != null)
             {
