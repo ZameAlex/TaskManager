@@ -5,6 +5,9 @@ namespace TaskManager.BLL.Interfaces
 {
     public interface IMapper
     {
+        EntityDTO MapEntity(Entity value);
+        Entity MapEntity(EntityDTO value);
+
         CalendarDayDTO MapCalendarDay(CalendarDay value);
         CalendarDay MapCalendarDay(CalendarDayDTO value);
 
