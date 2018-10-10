@@ -2,17 +2,17 @@
 
 namespace TaskManager.BLL.Interfaces
 {
-    public interface IService<TEntity>
+    public interface IService<DEntity>
     {
-        List<TEntity> GetAll();
+        List<DEntity> GetAll();
 
-        TEntity GetById(int id);
+        DEntity GetById(int id);
 
-        int Create(TEntity entity);
+        int Create(DEntity entity);
 
-        void Update(int id, TEntity entity);
+        void Update(int id, DEntity entity);
 
-        void Delete(TEntity entity);
+        void Delete(DEntity entity);
 
         void DeleteById(int id);
     }

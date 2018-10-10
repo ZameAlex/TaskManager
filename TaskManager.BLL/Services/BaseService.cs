@@ -5,33 +5,39 @@ using TaskManager.BLL.Interfaces;
 using TaskManager.BLL.Validation;
 using TaskManager.DLL.Interfaces;
 using TaskManager.DLL.Models;
+using TaskManager.Shared.DTOs;
 
 namespace TaskManager.BLL.Services
 {
-    public class BaseService<TEntity, REntity> : IService<TEntity> where TEntity : class where REntity : Entity
+    public class BaseService<DEntity, MEntity> : IService<DEntity> where DEntity : EntityDTO where MEntity : Entity
     {
-        private readonly IRepository<REntity> repository;
+        private readonly IRepository<MEntity> repository;
         private readonly IMapper mapper;
-        private readonly IValidator<REntity> validator;
+        private readonly IValidator<MEntity> validator;
 
-        public BaseService(IRepository<REntity> repository, IMapper mapper, ValidatorFactory validatorFactory)
+        public BaseService(IRepository<MEntity> repository, IMapper mapper, ValidatorFactory validatorFactory)
         {
             this.repository = repository;
             this.mapper = mapper;
-            this.validator = validatorFactory.GetValidator<REntity>();
+            this.validator = validatorFactory.GetValidator<MEntity>();
         }
 
-        public List<TEntity> GetAll()
+        public List<DEntity> GetAll()
+        {
+            var result = new List<DEntity>();
+            foreach (var item in repository.GetAll())
+            {
+                result.Add((DEntity)mapper.MapEntity(item));
+            }
+            return result;
+        }
+
+        public int Create(DEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public int Create(TEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(TEntity entity)
+        public void Delete(DEntity entity)
         {
             throw new NotImplementedException();
         }
@@ -41,12 +47,12 @@ namespace TaskManager.BLL.Services
             throw new NotImplementedException();
         }
 
-        public TEntity GetById(int id)
+        public DEntity GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(int id, TEntity entity)
+        public void Update(int id, DEntity entity)
         {
             throw new NotImplementedException();
         }
