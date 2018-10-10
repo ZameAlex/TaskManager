@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace TaskManager.Shared.DTOs
 {
-    public class CalendarDayDTO
+    public class CalendarDayDTO : EntityDTO
     {
-        public int Id { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan FreeTime { get; set; }
         public List<TaskDTO> Tasks { get; set; }
