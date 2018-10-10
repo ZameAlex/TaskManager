@@ -27,6 +27,42 @@ namespace TaskManager.BLL.Mapping
             this.userRepo = userRepo;
         }
 
+        public EntityDTO MapEntity(Entity value)
+        {
+            if (value is CalendarDay)
+                return MapCalendarDay(value as CalendarDay);
+            else if (value is ConcreteTask)
+                return MapConcreteTask(value as ConcreteTask);
+            else if (value is GlobalTask)
+                return MapGlobalTask(value as GlobalTask);
+            else if (value is Stage)
+                return MapStage(value as Stage);
+            else if (value is Theme)
+                return MapTheme(value as Theme);
+            else if (value is User)
+                return MapUser(value as User);
+            else
+                throw new NotFoundException();
+        }
+
+        public Entity MapEntity(EntityDTO value)
+        {
+            if (value is CalendarDayDTO)
+                return MapCalendarDay(value as CalendarDayDTO);
+            else if (value is ConcreteTaskDTO)
+                return MapConcreteTask(value as ConcreteTaskDTO);
+            else if (value is GlobalTaskDTO)
+                return MapGlobalTask(value as GlobalTaskDTO);
+            else if (value is StageDTO)
+                return MapStage(value as StageDTO);
+            else if (value is ThemeDTO)
+                return MapTheme(value as ThemeDTO);
+            else if (value is UserDTO)
+                return MapUser(value as UserDTO);
+            else
+                throw new NotFoundException();
+        }
+
         public CalendarDayDTO MapCalendarDay(CalendarDay value)
         {
             var list = new List<TaskDTO>();
