@@ -6,6 +6,7 @@ using TaskManager.BLL.Validation;
 using TaskManager.DLL.Interfaces;
 using TaskManager.DLL.Models;
 using TaskManager.Shared.DTOs;
+using TaskManager.Shared.Exceptions;
 
 namespace TaskManager.BLL.Services
 {
@@ -22,39 +23,58 @@ namespace TaskManager.BLL.Services
             this.validator = validatorFactory.GetValidator<MEntity>();
         }
 
+        //Check if item need cast to Entity
         public List<DEntity> GetAll()
         {
             var result = new List<DEntity>();
             foreach (var item in repository.GetAll())
             {
-                result.Add((DEntity)mapper.MapEntity(item));
+                result.Add(mapper.MapEntity(item) as DEntity);
             }
             return result;
         }
 
-        public int Create(DEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(DEntity entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public DEntity GetById(int id)
         {
-            throw new NotImplementedException();
+            return mapper.MapEntity(repository.GetById(id)) as DEntity;
+        }
+
+        public int Create(DEntity entity)
+        {
+            var validationResult = validator.Validate(entity);
+            if (validationResult.IsValid)
+                return repository.Create(mapper.MapEntity(entity) as MEntity);
+            else
+                throw new ValidationException(validationResult.Errors);
         }
 
         public void Update(int id, DEntity entity)
         {
-            throw new NotImplementedException();
+            var validationResult = validator.Validate(entity);
+            if (!validationResult.IsValid)
+                throw new ValidationException(validationResult.Errors);
+            try
+            {
+                repository.Update(id, mapper.MapEntity(entity) as MEntity);
+            }
+            catch (ArgumentNullException)
+            {
+                throw new NotFoundException();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Delete(DEntity entity)
+        {
+            repository.Delete(mapper.MapEntity(entity) as MEntity);
+        }
+
+        public void DeleteById(int id)
+        {
+            repository.DeleteById(id);
         }
     }
 }
