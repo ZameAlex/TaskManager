@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using TaskManager.DLL.Models;
+using TaskManager.Shared.Exceptions;
 
 namespace TaskManager.DLL.DBContext
 {
@@ -35,8 +36,10 @@ namespace TaskManager.DLL.DBContext
                 return Themes as DbSet<TEntity>;
             else if (Stages is IEnumerable<TEntity>)
                 return Stages as DbSet<TEntity>;
-            else
+            else if (Users is IEnumerable<TEntity>)
                 return Users as DbSet<TEntity>;
+            else
+                throw new NotFoundException();
         }
     }
 }
