@@ -10,13 +10,13 @@ using TaskManager.Shared.Exceptions;
 
 namespace TaskManager.BLL.Services
 {
-    public class BaseService<DEntity, MEntity> : IService<DEntity> where DEntity : EntityDTO where MEntity : Entity
+    public abstract class BaseService<DEntity, MEntity> : IService<DEntity> where DEntity : EntityDTO where MEntity : Entity
     {
-        private readonly IRepository<MEntity> repository;
-        private readonly IMapper mapper;
-        private readonly IValidator<MEntity> validator;
+        protected readonly IBaseRepository<MEntity> repository;
+        protected readonly IMapper mapper;
+        protected readonly IValidator<MEntity> validator;
 
-        public BaseService(IRepository<MEntity> repository, IMapper mapper, ValidatorFactory validatorFactory)
+        public BaseService(IBaseRepository<MEntity> repository, IMapper mapper, ValidatorFactory validatorFactory)
         {
             this.repository = repository;
             this.mapper = mapper;

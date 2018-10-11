@@ -5,7 +5,7 @@ using TaskManager.DLL.Models;
 
 namespace TaskManager.DLL.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : Entity
+    public interface IBaseRepository<TEntity> where TEntity : Entity
     {
         List<TEntity> GetAll();
 
