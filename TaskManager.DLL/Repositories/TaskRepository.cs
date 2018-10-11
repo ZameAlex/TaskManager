@@ -14,14 +14,35 @@ namespace TaskManager.DLL.Repositories
 
         }
 
-        public void UpdateConcreteTask(int id, ConcreteTask entity)
+        public override void Update(int id, TaskEntity entity)
         {
-            base.Update(id, entity as TaskEntity);
-        }
-
-        public void UpdateGlobalTask(int id, GlobalTask entity)
-        {
-            base.Update(id, entity as TaskEntity);
+            if (entity is ConcreteTask)
+            {
+                var concreteTask = entity as ConcreteTask;
+                var tmp = GetById(id) as ConcreteTask;
+                tmp.Name = concreteTask.Name;
+                tmp.Description = concreteTask.Description;
+                tmp.Status = concreteTask.Status;
+                tmp.Estimation = concreteTask.Estimation;
+                tmp.Requirement = concreteTask.Requirement;
+                tmp.StartTime = concreteTask.StartTime;
+                tmp.Frequency = concreteTask.Frequency;
+                tmp.Days = concreteTask.Days;
+                tmp.Stages = concreteTask.Stages;
+                tmContext.ConcreteTasks.Update(tmp);
+            }
+            else
+            {
+                var globalTask = entity as GlobalTask;
+                var tmp = GetById(id) as GlobalTask;
+                tmp.Name = globalTask.Name;
+                tmp.Description = globalTask.Description;
+                tmp.Status = globalTask.Status;
+                tmp.EndDate = globalTask.EndDate;
+                tmp.Tasks = globalTask.Tasks;
+                tmContext.GlobalTasks.Update(tmp);
+            }
+            base.Update(id, entity);
         }
 
         public void UpdateConcreteTaskDaysByAddingDay(int id, CalendarDay day)
