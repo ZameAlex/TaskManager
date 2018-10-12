@@ -7,12 +7,6 @@ namespace TaskManager.DLL.Interfaces
 {
     public interface IConcreteTaskRepository
     {
-        void UpdateConcreteTaskName(int id, string name);
-
-        void UpdateConcreteTaskDescription(int id, string description);
-
-        void UpdateConcreteTaskStatus(int id, Status status);
-
         void UpdateConcreteTaskEstimation(int id, TimeSpan estimation);
 
         void UpdateConcreteTaskRequirement(int id, bool requirement);

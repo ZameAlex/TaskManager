@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using TaskManager.DLL.DBContext;
 using TaskManager.DLL.Interfaces;
 using TaskManager.DLL.Models;
 using TaskManager.Shared.Enums;
+using TaskManager.Shared.Exceptions;
 
 namespace TaskManager.DLL.Repositories
 {
@@ -31,7 +33,7 @@ namespace TaskManager.DLL.Repositories
                 tmp.Stages = concreteTask.Stages;
                 tmContext.ConcreteTasks.Update(tmp);
             }
-            else
+            else if (entity is GlobalTask)
             {
                 var globalTask = entity as GlobalTask;
                 var tmp = GetById(id) as GlobalTask;
@@ -42,7 +44,60 @@ namespace TaskManager.DLL.Repositories
                 tmp.Tasks = globalTask.Tasks;
                 tmContext.GlobalTasks.Update(tmp);
             }
+            else
+                throw new NotFoundException();
             base.Update(id, entity);
+        }
+
+        public void UpdateTaskName(int id, string name)
+        {
+            var tmp = GetById(id);
+            tmp.Name = name;
+            if (tmp is ConcreteTask)
+                tmContext.ConcreteTasks.Update(tmp as ConcreteTask);
+            else if (tmp is GlobalTask)
+                tmContext.GlobalTasks.Update(tmp as GlobalTask);
+            else
+                throw new NotFoundException();
+            base.Update(id, tmp);
+        }
+
+        public void UpdateTaskDescription(int id, string description)
+        {
+            var tmp = GetById(id);
+            tmp.Description = description;
+            if (tmp is ConcreteTask)
+                tmContext.ConcreteTasks.Update(tmp as ConcreteTask);
+            else if (tmp is GlobalTask)
+                tmContext.GlobalTasks.Update(tmp as GlobalTask);
+            base.Update(id, tmp);
+        }
+
+        public void UpdateTaskStatus(int id, Status status)
+        {
+            var tmp = GetById(id);
+            tmp.Status = status;
+            if (tmp is ConcreteTask)
+                tmContext.ConcreteTasks.Update(tmp as ConcreteTask);
+            else if (tmp is GlobalTask)
+                tmContext.GlobalTasks.Update(tmp as GlobalTask);
+
+            base.Update(id, tmp);
+        }
+
+        #region ConcreteTaskMethods
+
+        public void UpdateConcreteTaskEstimation(int id, TimeSpan estimation)
+        {
+            var tmp = GetById(id);
+            if (tmp is ConcreteTask)
+            {
+                (tmp as ConcreteTask).Estimation = estimation;
+                tmContext.ConcreteTasks.Update(tmp as ConcreteTask);
+            }
+            else
+                throw new NotFoundException();
+            base.Update(id, tmp as TaskEntity);
         }
 
         public void UpdateConcreteTaskDaysByAddingDay(int id, CalendarDay day)
@@ -65,22 +120,7 @@ namespace TaskManager.DLL.Repositories
             throw new NotImplementedException();
         }
 
-        public void UpdateConcreteTaskDescription(int id, string description)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateConcreteTaskEstimation(int id, TimeSpan estimation)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateConcreteTaskFrequency(int id, Frequency frequency)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateConcreteTaskName(int id, string name)
         {
             throw new NotImplementedException();
         }
@@ -115,27 +155,11 @@ namespace TaskManager.DLL.Repositories
             throw new NotImplementedException();
         }
 
-        public void UpdateConcreteTaskStatus(int id, Status status)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public void UpdateGlobalTaskDescription(int id, string description)
-        {
-            throw new NotImplementedException();
-        }
+        #region GlobalTaskMethods
 
         public void UpdateGlobalTaskEndDate(int id, DateTime endDate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateGlobalTaskName(int id, string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateGlobalTaskStatus(int id, Status status)
         {
             throw new NotImplementedException();
         }
@@ -159,5 +183,7 @@ namespace TaskManager.DLL.Repositories
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }
